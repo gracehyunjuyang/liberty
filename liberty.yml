@@ -22,10 +22,8 @@
     libertydir: /usr/local/WebSphere/Liberty/
     name: server01
    
- - name: Start
+- name: Start
   liberty_server:
     state: started 
     libertydir: /usr/local/WebSphere/Liberty/ 
     name: server01
-    
-    
