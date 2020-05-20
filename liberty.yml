@@ -16,7 +16,11 @@
       src: /tmp/wlp-javaee8-20.0.0.5.zip
       dest: /tmp/im
       remote_src: yes
-    
+
+   - name: Install Installation Manager
+     ibmim_installer:
+      src: /tmp/im/
+
   - name: Create
     profile_liberty:
       state: present 
