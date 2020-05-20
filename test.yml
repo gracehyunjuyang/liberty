@@ -3,8 +3,7 @@
   tasks:
 
   - name: server start
-    shell: /bin/sh /was/AppServer/wlp/bin/1.sh
-    #command: /bin/sh /was/AppServer/wlp/bin/server start {{ server_name }}
+    shell: /was/AppServer/wlp/bin/server start {{ server_name }} &
     
  # - name: Start
  #   liberty_server:
