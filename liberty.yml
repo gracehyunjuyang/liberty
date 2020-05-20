@@ -22,7 +22,10 @@
       state: present 
       libertydir: /was/AppServer/wlp
       name: "{{ server_name }}"
- 
+
+  - name: server.xml ip setting
+    shell: sed -e '28 i\                  host="*"' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
+
   - name: server.xml http port
     shell:  sed -i 's/httpPort="9080"/httpPort="80"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
  
