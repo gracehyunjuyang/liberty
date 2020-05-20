@@ -18,7 +18,7 @@
       remote_src: yes
 
   - name: Install Installation Manager
-    ibmim_installer:
+    ibmim:
       src: /tmp/im/
 
   - name: Create
