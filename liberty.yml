@@ -9,26 +9,22 @@
   - name: Create IM directory
     file:
       state: directory
-      path: /tmp/im
+      path: /usr/local/WebSphere/Liberty
 
   - name: Unarchive installer zip
     unarchive:
       src: /tmp/wlp-javaee8-20.0.0.5.zip
-      dest: /tmp/im
+      dest: /usr/local/WebSphere/Liberty
       remote_src: yes
-
-  - name: Install Installation Manager
-    ibmim:
-      src: /tmp/im/
 
   - name: Create
     profile_liberty:
       state: present 
-      libertydir: /usr/local/WebSphere/Liberty/
+      libertydir: /usr/local/WebSphere/Liberty/wlp
       name: server01
    
   - name: Start
     liberty_server:
       state: started 
-      libertydir: /usr/local/WebSphere/Liberty/ 
+      libertydir: /usr/local/WebSphere/Liberty/wlp
       name: server01
