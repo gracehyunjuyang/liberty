@@ -1,13 +1,12 @@
 - hosts: all
   gather_facts: no
-  become: yes
   tasks:
 
- # - name: server start
- #   shell: /was/AppServer/wlp/bin/server start {{ server_name }} &
+  - name: server start
+    shell: /bin/sh /was/AppServer/wlp/bin/server start {{ server_name }}
     
-  - name: Start
-    liberty_server:
-      state: started
-      libertydir: /was/AppServer/wlp
-      name: "{{ server_name }}"
+ # - name: Start
+ #   liberty_server:
+ #     state: started
+ #     libertydir: /was/AppServer/wlp
+ #     name: "{{ server_name }}"
