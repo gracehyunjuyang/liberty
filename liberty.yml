@@ -36,6 +36,7 @@
     copy:
       src: /tmp/"{{ app_name }}"
       dest: /was/AppServer/wlp/usr/servers/"{{ server_name }}"/apps
+      remote_src: yes
 
   - name: server.xml app deploy
     shell:  sed -i '33 i\    <application context-root="/" type="war" location="{{ app_name }}"/>' server.xml /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
