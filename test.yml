@@ -4,7 +4,7 @@
 
   - name: server start
     shell: /was/AppServer/wlp/bin/server start {{ server_name }}
-    become: yes
+    become_user: root
 
  # - name: Start
  #   liberty_server:
