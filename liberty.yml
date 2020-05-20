@@ -1,5 +1,5 @@
-- hosts: localhost
-  connection: local
+#- hosts: localhost
+#  connection: local
   #tasks:
   #  - name: Download installer zip
   #    get_url:
