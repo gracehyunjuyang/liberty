@@ -46,3 +46,4 @@
       state: started 
       libertydir: /was/AppServer/wlp/
       name: "{{ server_name }}"
+    run_once: yes
