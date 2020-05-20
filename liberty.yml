@@ -9,22 +9,28 @@
   - name: Create IM directory
     file:
       state: directory
-      path: /usr/local/WebSphere/Liberty
+      path: /was/AppServer
 
   - name: Unarchive installer zip
     unarchive:
       src: /tmp/wlp-javaee8-20.0.0.5.zip
-      dest: /usr/local/WebSphere/Liberty
+      dest: /was/AppServer
       remote_src: yes
 
   - name: Create
     profile_liberty:
       state: present 
-      libertydir: /usr/local/WebSphere/Liberty/wlp
-      name: server01
-   
+      libertydir: /was/AppServer/wlp
+      name: {{ server_name }}
+ 
+  - name: server.xml http port
+    shell:  sed -i 's/httpPort="9080"/httpPort="80"/g' /was/AppServer/wlp/usr/servers/{{ server_name }}/server.xml
+ 
+  - name: server.xml https port
+    shell:  sed -i 's/httpsPort="9080"/httpsPort="443"/g' /was/AppServer/wlp/usr/servers/{{ server_name }}/server.xml
+
   - name: Start
     liberty_server:
       state: started 
-      libertydir: /usr/local/WebSphere/Liberty/wlp
+      libertydir: /was/AppServer/wlp
       name: server01
