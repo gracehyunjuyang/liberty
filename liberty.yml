@@ -27,7 +27,15 @@
     shell:  sed -i 's/httpPort="9080"/httpPort="80"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
  
   - name: server.xml https port
-    shell:  sed -i 's/httpsPort="9080"/httpsPort="443"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
+    shell:  sed -i 's/httpsPort="9443"/httpsPort="443"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
+
+  - name: copy app
+    copy:
+      src: /tmp/"{{ app_name }}"
+      dest: /was/AppServer/wlp/usr/servers/"{{ server_name }}"/apps
+
+  - name: server.xml app deploy
+    shell:  sed -i '33 i\    <application context-root="/" type="war" location="{{ app_name }}"/>' server.xml /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
   - name: Start
     liberty_server:
