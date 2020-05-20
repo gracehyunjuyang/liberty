@@ -15,6 +15,7 @@
     unarchive:
       src: /tmp/wlp-javaee8-20.0.0.5.zip
       dest: /tmp/im
+      remote_src: yes
     
   - name: Create
     profile_liberty:
