@@ -21,16 +21,16 @@
     profile_liberty:
       state: present 
       libertydir: /was/AppServer/wlp
-      name: {{ server_name }}
+      name: "{{ server_name }}"
  
   - name: server.xml http port
-    shell:  sed -i 's/httpPort="9080"/httpPort="80"/g' /was/AppServer/wlp/usr/servers/{{ server_name }}/server.xml
+    shell:  sed -i 's/httpPort="9080"/httpPort="80"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
  
   - name: server.xml https port
-    shell:  sed -i 's/httpsPort="9080"/httpsPort="443"/g' /was/AppServer/wlp/usr/servers/{{ server_name }}/server.xml
+    shell:  sed -i 's/httpsPort="9080"/httpsPort="443"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
   - name: Start
     liberty_server:
       state: started 
       libertydir: /was/AppServer/wlp
-      name: server01
+      name: "{{ server_name }}"
