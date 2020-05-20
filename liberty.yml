@@ -27,10 +27,10 @@
     shell: sed -i '28 i\                  host="{{ ansible_host }}"' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
   - name: server.xml http port
-    shell:  sed -i 's/httpPort="9080"/httpPort="80"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
+    shell: sed -i 's/httpPort="9080"/httpPort="80"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
  
   - name: server.xml https port
-    shell:  sed -i 's/httpsPort="9443"/httpsPort="443"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
+    shell: sed -i 's/httpsPort="9443"/httpsPort="443"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
   - name: copy app
     copy:
@@ -39,10 +39,13 @@
       remote_src: yes
 
   - name: server.xml app deploy
-    shell:  sed -i '33 i\    <application context-root="/" type="war" location="{{ app_name }}"/>' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
+    shell: sed -i '33 i\    <application context-root="/" type="war" location="{{ app_name }}"/>' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
   #- name: Start
    # liberty_server:
     #  state: started 
      # libertydir: /was/AppServer/wlp/
       #name: "{{ server_name }}"
+
+  - name: server start
+    shell: /was/AppServer/wlp/bin/server start {{ server_name }}
