@@ -4,7 +4,7 @@
 
   - name: server start
     shell: /was/AppServer/wlp/bin/server start {{ server_name }}
-    delay: 10s
+    delay: 10
  # - name: Start
  #   liberty_server:
  #     state: started
