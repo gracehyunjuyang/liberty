@@ -5,6 +5,12 @@
   - name: server start
     shell: /was/AppServer/wlp/bin/server start {{ server_name }}
     
+  - name: server start
+    shell: /was/AppServer/wlp/bin/server start {{ server_name }}
+    
+  - name: server start
+    shell: /was/AppServer/wlp/bin/server start {{ server_name }}
+    
  # - name: Start
  #   liberty_server:
  #     state: started
