@@ -7,3 +7,7 @@
       state: started 
       libertydir: /was/AppServer/wlp/
       name: "{{ server_name }}"
+    register: liberty
+  - name: dsgg
+    debug:
+      msg: {{ liberty.libertydir }}
