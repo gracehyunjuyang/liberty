@@ -13,7 +13,7 @@
 
   - name: Unarchive installer zip
     unarchive:
-      src: /files/wlp-javaee8-20.0.0.5.zip
+      src: ./files/wlp-javaee8-20.0.0.5.zip
       dest: /was/AppServer
 
   - name: Create
