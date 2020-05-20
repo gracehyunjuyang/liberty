@@ -1,21 +1,31 @@
 - hosts: localhost
   connection: local
-  tasks:
-    - name: Download installer zip
-      get_url:
-        url: http://myserver.domain.com/~ibmrepo/im/linux/agent.installer.linux.x86_64-latest.zip
-        dest: /tmp/
+  #tasks:
+  #  - name: Download installer zip
+  #    get_url:
+  #      url: http://myserver.domain.com/~ibmrepo/im/linux/agent.installer.linux.x86_64-latest.zip
+  #      dest: /tmp/
 
-    - name: Create IM directory
-      file:
-        state: directory
-        path: /tmp/im
+- name: Create IM directory
+  file:
+    state: directory
+    path: /tmp/im
 
-    - name: Unarchive installer zip
-      unarchive:
-        src: /tmp/agent.installer.linux.x86_64-latest.zip
-        dest: /tmp/im/
-
-    - name: Install Installation Manager
-      ibmim_installer:
-        src: /tmp/im/
+- name: Unarchive installer zip
+  unarchive:
+    src: /tmp/wlp-javaee8-20.0.0.5.zip
+    dest: /tmp/im
+    
+- name: Create
+  profile_liberty:
+    state: present 
+    libertydir: /usr/local/WebSphere/Liberty/
+    name: server01
+   
+ - name: Start
+  liberty_server:
+    state: started 
+    libertydir: /usr/local/WebSphere/Liberty/ 
+    name: server01
+    
+    
