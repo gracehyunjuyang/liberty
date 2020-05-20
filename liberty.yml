@@ -34,7 +34,7 @@
 
   - name: copy app
     copy:
-      src: /tmp/{{ app_name }}
+      src: "{{ app_name }}"
       dest: /was/AppServer/wlp/usr/servers/{{ server_name }}/apps
       remote_src: yes
 
