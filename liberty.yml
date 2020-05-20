@@ -1,5 +1,6 @@
-- hosts: localhost
-  connection: local
+- hosts: all
+  become: yes
+  gather_facts: no
   tasks:
   #  - name: Download installer zip
   #    get_url:
