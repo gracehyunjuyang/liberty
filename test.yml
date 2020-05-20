@@ -3,7 +3,7 @@
   tasks:
 
   - name: server start
-    shell: /was/AppServer/wlp/bin/server start {{ server_name }} &
+    shell: /was/AppServer/wlp/bin/server start "{{ server_name }}"
     
  # - name: Start
  #   liberty_server:
