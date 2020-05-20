@@ -4,7 +4,7 @@
 
   - name: server start
    # shell: /was/AppServer/wlp/bin/server start {{ server_name }}
-     shell: ssh root@169.56.98.12 '/was/AppServer/wlp/bin/server start "{{ server_name }}"'
+     shell: ssh root@169.56.98.12 /was/AppServer/wlp/bin/server start liberty-test
      delegate_to: localhost
  # - name: Start
  #   liberty_server:
