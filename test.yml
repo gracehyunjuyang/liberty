@@ -3,5 +3,4 @@
   tasks:
 
   - name: server start
-    shell: /was/AppServer/wlp/bin/server start {{ server_name }}
-    become: yes
+    shell: /was/AppServer/wlp/bin/server start {{ server_name }} &
