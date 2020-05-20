@@ -4,7 +4,7 @@
 
   - name: server start
    # shell: /was/AppServer/wlp/bin/server start {{ server_name }}
-    shell: /was/AppServer/wlp/bin/server start liberty-test; sleep 10
+    shell: /was/AppServer/wlp/bin/server start liberty-test; sleep 20
  # - name: Start
  #   liberty_server:
  #     state: started
