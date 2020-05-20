@@ -10,4 +10,4 @@
     register: liberty
   - name: dsgg
     debug:
-      msg: "{{ liberty.libertydir }}"
+      msg: "{{ liberty }}"
