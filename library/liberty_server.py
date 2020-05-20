@@ -38,7 +38,7 @@ def main():
         module.exit_json(changed=True, msg=name + " stopped successfully", stdout=stdout_value)
 
     if state == 'started':
-        child = subprocess.Popen([libertydir+"/bin/server start " + name], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        child = subprocess.Popen(["nohup "+libertydir+"/bin/server start " + name +"&"], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         stdout_value, stderr_value = child.communicate()
         if child.returncode != 0:
             if not stderr_value.find("is running with process") < 0:
