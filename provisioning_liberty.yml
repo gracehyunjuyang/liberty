@@ -23,7 +23,7 @@
 
   - name: Unarchive Liberty zip
     unarchive:
-      src: wlp-javaee8-20.0.0.5.zip
+      src: files/wlp-javaee8-20.0.0.5.zip
       dest: /was/AppServer
       remote_src: yes
 
