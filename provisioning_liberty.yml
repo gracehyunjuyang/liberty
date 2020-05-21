@@ -6,6 +6,11 @@
   #      url: http://myserver.domain.com/~ibmrepo/im/linux/agent.installer.linux.x86_64-latest.zip
   #      dest: /tmp/
 
+  - name: install unzip (rpm) 
+    yum:
+      name: unzip
+      state: present
+
   - name: install ibm-java(rpm) 
     yum:
       name: java
