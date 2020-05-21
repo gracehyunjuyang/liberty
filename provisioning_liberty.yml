@@ -23,7 +23,7 @@
       
   - name: Application Copy
     copy:
-      src: wlp-javaee8-20.0.0.5.zip
+      src: modresorts1.0.war
       dest: /tmp
   #    remote_src: yes
 
