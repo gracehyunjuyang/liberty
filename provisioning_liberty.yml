@@ -18,7 +18,7 @@
 
   - name: Unarchive installer zip
     unarchive:
-      src: wlp-javaee8-20.0.0.5.zip
+      src: wlp-javaee8-{{ version }}.zip
       dest: /was/AppServer
       remote_src: yes
 
@@ -32,10 +32,10 @@
     shell: sed -i '28 i\                  host="{{ ansible_host }}"' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
   - name: server.xml http port
-    shell: sed -i 's/httpPort="9080"/httpPort="80"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
+    shell: sed -i 's/httpPort="9080"/httpPort="{{ http_port }}"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
  
   - name: server.xml https port
-    shell: sed -i 's/httpsPort="9443"/httpsPort="443"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
+    shell: sed -i 's/httpsPort="9443"/httpsPort="{{ https_port }}"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
   - name: copy app
     copy:
