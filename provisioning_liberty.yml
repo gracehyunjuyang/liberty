@@ -20,16 +20,10 @@
     file:
       state: directory
       path: /was/AppServer
-      
-  - name: Application Copy
-    copy:
-      src: https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/20.0.0.5/wlp-javaee8-20.0.0.5.zip
-      dest: /tmp
-      remote_src: yes
 
   - name: Unarchive Liberty zip
     unarchive:
-      src: /tmp/wlp-javaee8-20.0.0.5.zip
+      src: https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/20.0.0.5/wlp-javaee8-20.0.0.5.zip
       dest: /was/AppServer
       remote_src: yes
 
