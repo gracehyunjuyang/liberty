@@ -23,15 +23,15 @@
       
   - name: Application Copy
     copy:
-      src: wlp-javaee8-20.0.0.5.zip
+      src: https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/20.0.0.5/wlp-javaee8-20.0.0.5.zip
       dest: /tmp
   #    remote_src: yes
 
   - name: Unarchive Liberty zip
     unarchive:
-      src: wlp-javaee8-20.0.0.5.zip
+      src: /tmp/wlp-javaee8-20.0.0.5.zip
       dest: /was/AppServer
-   #   remote_src: yes
+      remote_src: yes
 
   - name: Create Liberty server
     profile_liberty:
@@ -52,7 +52,7 @@
     copy:
       src: "{{ app_name }}"
       dest: /was/AppServer/wlp/usr/servers/{{ server_name }}/apps
-      remote_src: yes
+ #     remote_src: yes
 
   - name: server.xml app deploy setting
     shell: sed -i '34 i\    <application context-root="/" type="war" location="{{ app_name }}"/>' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
