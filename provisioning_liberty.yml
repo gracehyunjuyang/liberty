@@ -6,23 +6,23 @@
   #      url: http://myserver.domain.com/~ibmrepo/im/linux/agent.installer.linux.x86_64-latest.zip
   #      dest: /tmp/
 
-  - name: install java rpm 
+  - name: install ibm-java(rpm) 
     yum:
       name: java
       state: present
 
-  - name: Create IM directory
+  - name: Create Liberty install directory
     file:
       state: directory
       path: /was/AppServer
 
-  - name: Unarchive installer zip
+  - name: Unarchive Liberty zip
     unarchive:
       src: wlp-javaee8-{{ liberty_version }}.zip
       dest: /was/AppServer
       remote_src: yes
 
-  - name: Create
+  - name: Create Liberty server
     profile_liberty:
       state: present 
       libertydir: /was/AppServer/wlp
@@ -31,22 +31,22 @@
   - name: server.xml ip setting
     shell: sed -i '28 i\                  host="{{ ansible_host }}"' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
-  - name: server.xml http port
+  - name: server.xml http port setting
     shell: sed -i 's/httpPort="9080"/httpPort="{{ http_port }}"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
  
-  - name: server.xml https port
+  - name: server.xml https port setting
     shell: sed -i 's/httpsPort="9443"/httpsPort="{{ https_port }}"/g' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
-  - name: copy app
+  - name: Application Copy
     copy:
       src: "{{ app_name }}"
       dest: /was/AppServer/wlp/usr/servers/{{ server_name }}/apps
       remote_src: yes
 
-  - name: server.xml app deploy
+  - name: server.xml app deploy setting
     shell: sed -i '34 i\    <application context-root="/" type="war" location="{{ app_name }}"/>' /was/AppServer/wlp/usr/servers/"{{ server_name }}"/server.xml
 
-  - name: Start
+  - name: Liberty server start
     liberty_server:
       state: started
       libertydir: /was/AppServer/wlp
