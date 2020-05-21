@@ -25,7 +25,7 @@
     copy:
       src: https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/20.0.0.5/wlp-javaee8-20.0.0.5.zip
       dest: /tmp
-  #    remote_src: yes
+      remote_src: yes
 
   - name: Unarchive Liberty zip
     unarchive:
