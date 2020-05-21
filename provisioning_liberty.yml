@@ -23,7 +23,8 @@
 
   - name: Unarchive Liberty zip
     unarchive:
-      src: wlp-javaee8-20.0.0.5.zip
+   #   src: wlp-javaee8-20.0.0.5.zip
+      src: modresorts1.0.war
       dest: /was/AppServer
       remote_src: yes
 
