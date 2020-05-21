@@ -20,6 +20,12 @@
     file:
       state: directory
       path: /was/AppServer
+      
+  - name: Application Copy
+    copy:
+      src: wlp-javaee8-20.0.0.5.zip
+      dest: /tmp
+  #    remote_src: yes
 
   - name: Unarchive Liberty zip
     unarchive:
