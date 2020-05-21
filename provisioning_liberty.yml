@@ -18,7 +18,7 @@
 
   - name: Unarchive installer zip
     unarchive:
-      src: wlp-javaee8-{{ version }}.zip
+      src: wlp-javaee8-{{ liberty_version }}.zip
       dest: /was/AppServer
       remote_src: yes
 
