@@ -29,7 +29,7 @@
   - name: Create Liberty server
     profile_liberty:
       state: present 
-      libertydir: {{ install_path }}/wlp
+      libertydir: "{{ install_path }}"/wlp
       name: "{{ server_name }}"
 
 ### configuration server.xml
@@ -54,5 +54,5 @@
   - name: Liberty server start
     liberty_server:
       state: started
-      libertydir: {{ install_path }}/wlp
+      libertydir: "{{ install_path }}"/wlp
       name: "{{ server_name }}"
