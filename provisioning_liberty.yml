@@ -33,7 +33,7 @@
       name: "{{ server_name }}"
 
 ### configuration server.xml
-  - name: Liberty server setting
+  - name: Liberty server service IP setting
     shell: sed -i '28 i\                  host="{{ ansible_host }}"' "{{ install_path }}"/wlp/usr/servers/"{{ server_name }}"/server.xml
 
   - name: Liberty server service port(http) setting
