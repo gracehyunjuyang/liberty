@@ -1,13 +1,16 @@
+#######################################################
+# Libverty server provisioning playbook - RHEL7
+#######################################################
 - hosts: all
   gather_facts: no
   tasks:
 
-  - name: install unzip (rpm) 
+  - name: Install unzip rpm
     yum:
       name: unzip
       state: present
 
-  - name: install ibm-java(rpm) 
+  - name: Install ibm-java rpm
     yum:
       name: java
       state: present
@@ -29,13 +32,14 @@
       libertydir: "{{ install_path }}"/wlp
       name: "{{ server_name }}"
 
-  - name: server.xml ip setting
+### configuration server.xml
+  - name: Liberty server setting
     shell: sed -i '28 i\                  host="{{ ansible_host }}"' "{{ install_path }}"/wlp/usr/servers/"{{ server_name }}"/server.xml
 
-  - name: server.xml http port setting
+  - name: Liberty server service port(http) setting
     shell: sed -i 's/httpPort="9080"/httpPort="{{ http_port }}"/g' "{{ install_path }}"/wlp/usr/servers/"{{ server_name }}"/server.xml
  
-  - name: server.xml https port setting
+  - name: Liberty server service port(https) setting
     shell: sed -i 's/httpsPort="9443"/httpsPort="{{ https_port }}"/g' "{{ install_path }}"/wlp/usr/servers/"{{ server_name }}"/server.xml
 
 #  - name: Application Copy
@@ -43,7 +47,7 @@
 #      src: "{{ app_name }}"
 #      dest: "{{ install_path }}"/wlp/usr/servers/{{ server_name }}/apps
 
-  - name: server.xml Application deploy setting
+  - name: Liberty server Application deploy config setting - sample
     #shell: sed -i '34 i\    <application context-root="/" type="war" location="{{ app_name }}"/>' "{{ install_path }}"/wlp/usr/servers/"{{ server_name }}"/server.xml
     shell: sed -i '34 i\    <!--application context-root="/test" type="war" location="test"/-->' "{{ install_path }}"/wlp/usr/servers/"{{ server_name }}"/server.xml
 
